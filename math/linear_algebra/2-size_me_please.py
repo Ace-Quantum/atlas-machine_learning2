@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""documentation"""
 
 def matrix_shape(matrix):
     """ A program made to determine a shape """
