@@ -2,9 +2,10 @@
 
 """This file is solely for the purpose of transposing matrixes"""
 
+
 def matrix_transpose(matrix):
     """heck"""
-    
+
     rows = len(matrix)
     cols = len(matrix[0])
 
