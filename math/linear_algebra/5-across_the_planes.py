@@ -14,6 +14,6 @@ def add_matrices2D(mat1, mat2):
     
     for i in range(rows):
         for j in range(cols):
-            return_arr[i][j] = mat1[i][j] * mat2[i][j]
+            return_arr[i][j] = mat1[i][j] + mat2[i][j]
 
     return (return_arr)
