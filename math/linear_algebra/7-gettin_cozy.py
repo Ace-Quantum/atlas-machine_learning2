@@ -17,4 +17,5 @@ def cat_matrices2D(mat1, mat2, axis=0):
         return (basic_matrix_cat(mat1, mat2))
     else:
         return_arr[0] = basic_matrix_cat(mat1[0], mat2[0])
-        return_arr[1] = basic_matrix_cat(mat1[1], mat2[1])    
+        return_arr[1] = basic_matrix_cat(mat1[1], mat2[1])
+        return (return_arr)    
