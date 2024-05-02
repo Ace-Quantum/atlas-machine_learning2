@@ -10,6 +10,13 @@ def cat_matrices2D(mat1, mat2, axis=0):
 
     # if len(size_matrix(mat1)) != len(size_matrix(mat2)):
         # return (None)
+    print ("len of mat1[0]: " + str(len(mat1[0])))
+    print ("len of mat2[0]: " + str(len(mat2[0])))
+
+    if axis == 0 and len(mat1) != len(mat2):
+        return (None)
+    if axis == 1 and len(mat1[0]) != len(mat2[0]):
+        return (None)
 
     return_arr = [[0 for _ in range(len(mat1[0]))] for _ in range(len(mat1))]
 
