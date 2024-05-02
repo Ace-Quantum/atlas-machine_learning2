@@ -17,8 +17,8 @@ def cat_matrices2D(mat1, mat2, axis=0):
     if len(mat2) == 0 or len(mat2[0]) == 0:
         return return_arr
 
-    # print("size of mat1: " + str(size_matrix(mat1)))
-    # print("size of mat2: " + str(size_matrix(mat2)))
+    print("size of mat1: " + str(size_matrix(mat1)))
+    print("size of mat2: " + str(size_matrix(mat2)))
 
     if len(size_matrix(mat1)) != len(size_matrix(mat2)):
         return (None)
