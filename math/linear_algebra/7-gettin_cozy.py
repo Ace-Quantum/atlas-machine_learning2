@@ -8,8 +8,8 @@ def cat_matrices2D(mat1, mat2, axis=0):
     # if len(mat1) != len(mat2) or len(mat1[0]) != len(mat2[0]):
         # return (None)
 
-    if len(size_matrix(mat1)) != len(size_matrix(mat2)):
-        return (None)
+    # if len(size_matrix(mat1)) != len(size_matrix(mat2)):
+        # return (None)
 
     return_arr = [[0 for _ in range(len(mat1))] for _ in range(len(mat1[0]))]
 
