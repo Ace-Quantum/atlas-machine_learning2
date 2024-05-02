@@ -12,6 +12,9 @@ def add_matrices2D(mat1, mat2):
     if size_matrix(mat1) != size_matrix(mat2):
         return (None)
     
+    if size_matrix(mat1) == 0 or size_matrix(mat2) == 0:
+        return (None)
+    
     for i in range(rows):
         for j in range(cols):
             return_arr[i][j] = mat1[i][j] + mat2[i][j]
