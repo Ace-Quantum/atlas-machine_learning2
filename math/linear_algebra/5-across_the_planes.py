@@ -7,10 +7,7 @@ def add_matrices2D(mat1, mat2):
     rows = len(mat1)
     cols = len(mat1[0])
 
-    return_arr = [[0 for _ in range(rows)] for _ in range(cols)]
-    
-    # if len(mat1) != 2 or len(mat2) != 2:
-    #     return (None)
+    return_arr = [[0 for _ in range(cols)] for _ in range(rows)]
 
     if size_matrix(mat1) != size_matrix(mat2):
         return (None)
