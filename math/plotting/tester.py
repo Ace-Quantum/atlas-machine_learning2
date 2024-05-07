@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
 
-line = __import__('0-line').line
+scatter = __import__('1-scatter').scatter
 
-line()
+scatter()
