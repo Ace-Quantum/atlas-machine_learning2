@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
 
-scatter = __import__('1-scatter').scatter
+change_scale = __import__('2-change_scale').change_scale
 
-scatter()
+change_scale()
