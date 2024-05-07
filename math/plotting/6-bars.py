@@ -23,7 +23,12 @@ def bars():
 
     plt.bar(children, apples, color="red", label="apples", width=0.5)
     plt.bar(
-        children, bananas, bottom=apples, color="yellow", label="bananas", width=0.5
+        children, 
+        bananas, 
+        bottom=apples, 
+        color="yellow", 
+        label="bananas", 
+        width=0.5
     )
     plt.bar(
         children,
