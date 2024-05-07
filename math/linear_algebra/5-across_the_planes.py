@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
+"""This is some documentation"""
 
 size_matrix = __import__("2-size_me_please").matrix_shape
-"""This is some documentation"""
 
 
 def add_matrices2D(mat1, mat2):
