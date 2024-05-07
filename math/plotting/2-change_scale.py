@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
+"""Documentation goes here"""
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def change_scale():
+    """And here as well"""
     x = np.arange(0, 28651, 5730)
     r = np.log(0.5)
     t = 5730
