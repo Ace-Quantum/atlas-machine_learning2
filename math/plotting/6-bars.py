@@ -19,10 +19,24 @@ def bars():
     oranges = fruit[2]
     peaches = fruit[3]
 
-    plt.bar(children, apples, color="r", label="apples", width=.5)
-    plt.bar(children, bananas, bottom=apples, color="y", label="bananas", width=.5)
-    plt.bar(children, oranges, bottom=apples + bananas, color="#ff8000", label="oranges", width=.5)
-    plt.bar(children, peaches, bottom=apples + bananas + oranges, color="#ffe5b4", label="peaches", width=.5)
+    plt.bar(children, apples, color="red", label="apples", width=0.5)
+    plt.bar(children, bananas, bottom=apples, color="yellow", label="bananas", width=0.5)
+    plt.bar(
+        children,
+        oranges,
+        bottom=apples + bananas,
+        color="#ff8000",
+        label="oranges",
+        width=0.5,
+    )
+    plt.bar(
+        children,
+        peaches,
+        bottom=apples + bananas + oranges,
+        color="#ffe5b4",
+        label="peaches",
+        width=0.5,
+    )
 
     plt.ylabel("Quantity of Fruit")
     plt.title("Number of Fruit per Person")
