@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
-size_check = __import__('2-size_me_please').matrix_shape
+size_check = __import__("2-size_me_please").matrix_shape
+
 
 def mat_mul(mat1, mat2):
 
@@ -14,8 +15,8 @@ def mat_mul(mat1, mat2):
     # print("Size return_arr: " + str(size_check(return_arr)))
 
     if size_check(mat1)[1] != size_check(mat2)[0]:
-        return (None)
-    
+        return None
+
     for i in range(rows):
         for j in range(cols):
             for k in range(len(mat2)):
@@ -23,4 +24,4 @@ def mat_mul(mat1, mat2):
                 # print(return_arr[i][j])
 
     # print(return_arr)
-    return (return_arr)
+    return return_arr
