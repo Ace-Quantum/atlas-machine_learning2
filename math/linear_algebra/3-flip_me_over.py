@@ -3,7 +3,7 @@
 
 
 def matrix_transpose(matrix):
-    """heck"""
+    """this function transposes a matrix"""
 
     rows = len(matrix)
     cols = len(matrix[0])

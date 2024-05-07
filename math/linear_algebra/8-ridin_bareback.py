@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-
+"""Honestly idk where the heck the documentation needs to go"""
 size_check = __import__("2-size_me_please").matrix_shape
 
 
 def mat_mul(mat1, mat2):
+    """Let's not split hairs over it though"""
 
     rows = size_check(mat1)[0]
     cols = size_check(mat2)[1]
