@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+"""Oh heck was the documentation supposed to go here?"""
 import numpy as np
 import matplotlib.pyplot as plt
 
