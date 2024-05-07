@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Idk why they give us basecode but make us add 
+"""Idk why they give us basecode but make us add
 our own documentation"""
 import numpy as np
 import matplotlib.pyplot as plt
