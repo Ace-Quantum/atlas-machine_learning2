@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
+"""Here's some documentation!"""
 import numpy as np
 import matplotlib.pyplot as plt
 
 
 def bars():
+    """Oh wow, more documentation?"""
     np.random.seed(5)
     fruit = np.random.randint(0, 20, (4, 3))
     plt.figure(figsize=(6.4, 4.8))
@@ -20,7 +22,9 @@ def bars():
     peaches = fruit[3]
 
     plt.bar(children, apples, color="red", label="apples", width=0.5)
-    plt.bar(children, bananas, bottom=apples, color="yellow", label="bananas", width=0.5)
+    plt.bar(
+        children, bananas, bottom=apples, color="yellow", label="bananas", width=0.5
+    )
     plt.bar(
         children,
         oranges,
