@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
 
-two = __import__('3-two').two
+frequency = __import__('4-frequency').frequency
 
-two()
+frequency()
