@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
+"""Here's some documentation"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
+
 def scatter():
+    """And some more"""
 
     mean = [69, 0]
     cov = [[15, 8], [8, 15]]
@@ -14,6 +18,6 @@ def scatter():
     plt.xlabel("Height (in)")
     plt.ylabel("Weight (lbs)")
     plt.title("Men's Height vs Weight")
-    plt.scatter(x, y, c='m')
+    plt.scatter(x, y, c="m")
 
     plt.show()
