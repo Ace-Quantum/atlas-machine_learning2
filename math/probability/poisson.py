@@ -25,7 +25,7 @@ class Poisson:
         k = int(k)
 
         if k < 0:
-            return_val = 0
+            return_val = None
         else:
             factorial_result = 1
             for i in range(1, k + 1):
