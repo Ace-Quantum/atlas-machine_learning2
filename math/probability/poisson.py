@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Here's some documentation"""
 
+
 class Poisson:
     """And more? Wow I never would have guessed"""
 
@@ -48,7 +49,7 @@ class Poisson:
                 for j in range(1, i + 1):
                     i_factorial *= j
 
-                exponent_result = 2.7182818285 ** -self.lambtha
+                exponent_result = 2.7182818285**-self.lambtha
                 # exponent_result = 1
                 # temp = 1
                 # for i in range(1, 100):
