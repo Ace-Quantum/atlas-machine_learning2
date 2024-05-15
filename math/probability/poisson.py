@@ -37,7 +37,8 @@ class Poisson:
             return return_val
 
     def cdf(self, k):
-        """Putting in some documentation in hopes of nabbing one or two extra points"""
+        """Putting in some documentation
+        in hopes of nabbing one or two extra points"""
         k = int(k)
 
         if k < 0:
