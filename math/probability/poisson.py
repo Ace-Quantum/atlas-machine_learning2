@@ -1,8 +1,6 @@
 #!/usr/bin/env python3
 """Here's some documentation"""
 
-import numpy as np
-
 class Poisson:
     """And more? Wow I never would have guessed"""
 
