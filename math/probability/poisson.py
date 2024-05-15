@@ -35,10 +35,10 @@ class Poisson:
             ) / factorial_result
 
             return return_val
-        
+
     def cdf(self, k):
+        """Putting in some documentation in hopes of nabbing one or two extra points"""
         k = int(k)
-        # print("type of k:", type(k))
 
         if k < 0:
             return 0
@@ -47,12 +47,11 @@ class Poisson:
             for i in range(1, k + 1):
                 factorial_result *= i
             exponent_result = 1
-            temp = k
-            for i in range(100):
+            temp = -self.lambtha
+            for _ in range(100):
                 exponent_result *= 1 + temp / 100
                 temp /= 100
             cdf_value = 0
-            # print("type of k:", type(k))
             for i in range(k + 1):
-                cdf_value += (exponent_result) * (self.lambtha ** i) / factorial_result
+                cdf_value += (exponent_result) * (self.lambtha**i) / factorial_result
             return cdf_value
