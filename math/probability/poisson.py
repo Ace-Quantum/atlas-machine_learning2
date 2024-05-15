@@ -44,14 +44,18 @@ class Poisson:
         if k < 0:
             return 0
         else:
-            # factorial_result = 1
-            # for i in range(1, k + 1):
-            #     factorial_result *= i
-            # exponent_result = np.exp(-self.lambtha)
-            # cdf_value = 0
-            # for i in range(k + 1):
-            #     cdf_value += exponent_result * (self.lambtha**i) / factorial_result
             cdf_value = 0
             for i in range(k + 1):
-                cdf_value += np.exp(-self.lambtha) * (self.lambtha**i) / np.math.factorial(i)
+                i_factorial = 1
+                for j in range(1, i + 1):
+                    i_factorial *= j
+
+                exponent_result = 2.7182818285 ** -self.lambtha
+                # exponent_result = 1
+                # temp = 1
+                # for i in range(1, 100):
+                #     temp *= -self.lambtha / i
+                #     exponent_result += temp
+
+                cdf_value += exponent_result * (self.lambtha**i) / i_factorial
             return cdf_value
