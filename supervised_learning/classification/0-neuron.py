@@ -2,6 +2,7 @@
 import numpy as np
 """Documentation is here"""
 
+
 class Neuron:
     """Idk what to put here but it's kinda cool
     that we're building a fancy calculator
