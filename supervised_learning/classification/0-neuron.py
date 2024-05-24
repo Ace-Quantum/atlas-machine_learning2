@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import numpy as np
+
 """Documentation is here"""
 
 
@@ -10,7 +11,7 @@ class Neuron:
 
     def __init__(self, nx):
         """Oh look more documentation"""
-        
+
         if not isinstance(nx, int):
             raise TypeError("nx must be an integer")
         if nx < 1:
