@@ -27,3 +27,8 @@ def cat_matrices2D(mat1, mat2, axis=0):
         return_arr[0] = basic_matrix_cat(mat1[0], mat2[0])
         return_arr[1] = basic_matrix_cat(mat1[1], mat2[1])
         return (return_arr)
+
+
+"""task 8"""
+
+return_arr[i][j] = (mat1[i][j] * mat2[i][j]) + (mat1[j][i] * mat2[j][i])
