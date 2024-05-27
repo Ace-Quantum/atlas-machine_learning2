@@ -42,7 +42,10 @@ class Neuron:
         return self.__A
 
     def forward_prop(self, X):
-        """AAAA"""
+        """AAAA
+        Why does it feel like
+        I'll never be enough
+        for the checker"""
         Z = np.dot(self.__W, X) + self.__b
         self.__A = 1 / (1 + np.exp(-Z))
         return self.__A
