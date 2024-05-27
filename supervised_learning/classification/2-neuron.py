@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+"""Documents here! Getcher Documents!"""
+
 import numpy as np
 
 """Documentation is here"""

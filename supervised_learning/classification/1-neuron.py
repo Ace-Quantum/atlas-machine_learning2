@@ -1,4 +1,7 @@
 #!/usr/bin/env python3
+
+"""Documentation here for good measure"""
+
 import numpy as np
 
 """Documentation is here"""
