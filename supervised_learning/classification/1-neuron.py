@@ -16,22 +16,25 @@ class Neuron:
             raise TypeError("nx must be an integer")
         if nx < 1:
             raise ValueError("nx must be a positive integer")
-        
+
         self.nx = nx
 
     @property
     def W(self):
+        """W"""
         self.__W = np.random.normal(size=(1, self.nx))
         return self.__W
-    
+
     @property
     def b(self):
-        if not hasattr(self, '__b'):
+        """b"""
+        if not hasattr(self, "__b"):
             self.__b = 0
         return self.__b
-    
+
     @property
     def A(self):
-        if not hasattr(self, '__A'):
+        """A"""
+        if not hasattr(self, "__A"):
             self.__A = 0
         return self.__A
