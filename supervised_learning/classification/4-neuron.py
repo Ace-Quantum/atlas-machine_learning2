@@ -53,19 +53,13 @@ class Neuron:
     def cost(self, Y, A):
         """Calculates the cost of battle"""
         m = len(Y[0])
-        return -(1/m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
+        return -(1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
 
     def evaluate(self, X, Y):
+        """I can't believe it was this easy"""
         pred = self.forward_prop(X)
         pred_rounded = np.where(pred >= 0.5, 1, 0)
 
         ret_cost = self.cost(Y, pred)
 
         return pred_rounded, ret_cost
-
-        # pred = self.forward_prop(Y)
-        # pred_return = np.where(pred >= 0.5, 1, 0)
-
-        # pred_cost = self.cost(Y, X)
-
-        # return pred_return, pred_cost
