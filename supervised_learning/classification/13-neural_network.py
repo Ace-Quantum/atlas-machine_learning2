@@ -27,7 +27,7 @@ class NeuralNetwork:
         self.__b1 = np.zeros(shape=(nodes, 1))
         self.__A1 = 0
         self.__W2 = np.random.normal(size=(1, nodes))
-        self.__b2 = 0
+        self.__b2 = np.zeros((1, 1))
         self.__A2 = 0
 
     @property
