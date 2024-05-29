@@ -82,9 +82,11 @@ class NeuralNetwork:
 
     def evaluate(self, X, Y):
         """I can't believe it was this easy"""
-        pred = self.forward_prop(X)
-        pred_rounded = np.where(pred >= 0.5, 1, 0)
+        pred1, pred2 = self.forward_prop(X)
+        pred_rounded1 = np.where(pred1 >= 0.5, 1, 0)
+        pred_rounded2 = np.where(pred2 >= 0.5, 1, 0)
 
-        ret_cost = self.cost(Y, pred)
+        ret_cost1 = self.cost(Y, pred1)
+        ret_cost2 = self.cost(Y, pred2)
 
-        return pred_rounded, ret_cost
+        return pred_rounded2, ret_cost2
