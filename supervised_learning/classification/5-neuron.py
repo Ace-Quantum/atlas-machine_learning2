@@ -53,8 +53,7 @@ class Neuron:
     def cost(self, Y, A):
         """Calculates the cost of battle"""
         m = len(Y[0])
-        return -(1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(
-            1.0000001 - A))
+        return -(1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
 
     def evaluate(self, X, Y):
         """I can't believe it was this easy"""
@@ -66,22 +65,20 @@ class Neuron:
         return pred_rounded, ret_cost
 
     # def backward_prop(self, A, Y):
-    
+
     def gradient_descent(self, X, Y, A, alpha=0.05):
         """Time to finally learn what gradient descent is"""
-        
+
         m_len = Y.shape[1]
 
         # receive clarification on this one
         dZ = A - Y
-        
-        dW = (1/m_len) * np.dot(dZ, X.T)
-        db = (1/m_len) * np.sum(np.sum(dZ, axis=1))
+
+        dW = (1 / m_len) * np.dot(dZ, X.T)
+        db = (1 / m_len) * np.sum(np.sum(dZ, axis=1))
 
         # print(type(db))
 
         # Why multiply by alpha?
         self.__W -= alpha * dW
         self.__b -= alpha * db
-
-    
