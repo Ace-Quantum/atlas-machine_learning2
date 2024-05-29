@@ -79,4 +79,3 @@ class NeuralNetwork:
         m = len(Y[0])
         return -(1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(
             1.0000001 - A))
-    
