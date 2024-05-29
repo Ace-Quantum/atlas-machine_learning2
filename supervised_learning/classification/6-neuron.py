@@ -97,8 +97,8 @@ class Neuron:
         
         for epoch in range(iterations):
             A = self.forward_prop(X)
-            cost = self.cost(Y, A)
+            # cost = self.cost(Y, A)
 
             self.gradient_descent(X, Y, A, alpha)
 
-        return cost
+        return(self.evaluate(X, Y))
