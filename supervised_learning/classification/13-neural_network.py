@@ -27,7 +27,7 @@ class NeuralNetwork:
         self.__b1 = np.zeros(shape=(nodes, 1))
         self.__A1 = 0
         self.__W2 = np.random.normal(size=(1, nodes))
-        self.__b2 = np.zeros((1, 1))
+        self.__b2 = 0
         self.__A2 = 0
 
     @property
@@ -92,7 +92,7 @@ class NeuralNetwork:
     def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
         """update weights and biases"""
 
-        m_len = Y.shape[1]
+        m_len = Y.shape[0]
 
         dZ2 = A2 - Y
 
@@ -101,7 +101,7 @@ class NeuralNetwork:
 
         dZ1 = np.dot(self.__W2.T, dZ2)*(1-np.power(A1, 2))
 
-        dW1 = (1/m_len) * np.dot(dZ1, A2.T)
+        dW1 = (1/m_len) * np.dot(dZ1, X.T)
         db1 = (1/m_len) * np.sum(dZ1, axis=1, keepdims=True)
 
         self.__W1 -= alpha * dW1
