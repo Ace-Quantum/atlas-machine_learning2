@@ -76,9 +76,9 @@ class Neuron:
         dZ = A - Y
         
         dW = (1/m_len) * np.dot(dZ, X.T)
-        db = (1/m_len) * np.sum(dZ, axis=1, keepdims=True)
+        db = (1/m_len) * np.sum(np.sum(dZ, axis=1))
 
-        print(type(db))
+        # print(type(db))
 
         # Why multiply by alpha?
         self.__W -= alpha * dW
