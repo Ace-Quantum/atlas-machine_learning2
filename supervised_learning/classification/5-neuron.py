@@ -78,8 +78,10 @@ class Neuron:
         dW = (1/m_len) * np.dot(dZ, X.T)
         db = (1/m_len) * np.sum(dZ, axis=1, keepdims=True)
 
+        print(type(db))
+
         # Why multiply by alpha?
         self.__W -= alpha * dW
-        self.__b -= alpha *db
+        self.__b -= alpha * db
 
     
