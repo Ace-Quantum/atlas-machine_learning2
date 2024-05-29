@@ -59,7 +59,7 @@ class NeuralNetwork:
     def A2(self):
         """A2"""
         return self.__A2
-    
+
     def forward_prop(self, X):
         """AAAA
         Why does it feel like
@@ -68,7 +68,7 @@ class NeuralNetwork:
 
         Z1 = np.dot(self.__W1, X) + self.__b1
         self.__A1 = 1 / (1 + np.exp(-Z1))
-        
+
         Z2 = np.dot(self.__W2, self.A1) + self.__b2
         self.__A2 = 1 / (1 + np.exp(-Z2))
 
