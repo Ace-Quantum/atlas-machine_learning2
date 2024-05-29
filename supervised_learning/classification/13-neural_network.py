@@ -77,8 +77,7 @@ class NeuralNetwork:
     def cost(self, Y, A):
         """Calculates the cost of battle"""
         m = len(Y[0])
-        return -(1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(
-            1.0000001 - A))
+        return -(1 / m) * np.sum(Y * np.log(A) + (1 - Y) * np.log(1.0000001 - A))
 
     def evaluate(self, X, Y):
         """I can't believe it was this easy"""
@@ -92,17 +91,17 @@ class NeuralNetwork:
     def gradient_descent(self, X, Y, A1, A2, alpha=0.05):
         """update weights and biases"""
 
-        m_len = Y.shape[0]
+        m_len = Y.shape[1]
 
         dZ2 = A2 - Y
 
-        dW2 = (1 / m_len)*np.dot(dZ2, A1.T)
-        db2 = (1/m_len)*np.sum(dZ2, axis=1, keepdims=True)
+        dW2 = (1 / m_len) * np.dot(dZ2, A1.T)
+        db2 = (1 / m_len) * np.sum(dZ2, axis=1, keepdims=True)
 
-        dZ1 = np.dot(self.__W2.T, dZ2)*(1-np.power(A1, 2))
+        dZ1 = np.dot(self.__W2.T, dZ2) * (1 - np.power(A1, 2))
 
-        dW1 = (1/m_len) * np.dot(dZ1, X.T)
-        db1 = (1/m_len) * np.sum(dZ1, axis=1, keepdims=True)
+        dW1 = (1 / m_len) * np.dot(dZ1, X.T)
+        db1 = (1 / m_len) * np.sum(dZ1, axis=1, keepdims=True)
 
         self.__W1 -= alpha * dW1
         self.__b1 -= alpha * db1
