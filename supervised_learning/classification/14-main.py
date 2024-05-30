@@ -19,6 +19,7 @@ accuracy = np.sum(A == Y_train) / Y_train.shape[1] * 100
 print("Train cost:", cost)
 print("Train accuracy: {}%".format(accuracy))
 A, cost = nn.evaluate(X_dev, Y_dev)
+# print("We made it past this")
 accuracy = np.sum(A == Y_dev) / Y_dev.shape[1] * 100
 print("Dev cost:", cost)
 print("Dev accuracy: {}%".format(accuracy))

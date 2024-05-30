@@ -122,11 +122,12 @@ class NeuralNetwork:
             raise ValueError("alpha must be positive")
         
         for epoch in range(iterations):
-            A1 = self.forward_prop(X)
-            A2 = self.forward_prop(A1)
+            A1, A2 = self.forward_prop(X)
 
-            self.gradient_descent(X, Y, iterations, alpha)
+            self.gradient_descent(X, Y, A1, A2, alpha)
 
+        print("We made it this far")
         return self.evaluate(X, Y)
+    
 
         
