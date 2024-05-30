@@ -126,7 +126,7 @@ class NeuralNetwork:
 
             self.gradient_descent(X, Y, A1, A2, alpha)
 
-        print("We made it this far")
+        # print("We made it this far")
         return self.evaluate(X, Y)
     
 
