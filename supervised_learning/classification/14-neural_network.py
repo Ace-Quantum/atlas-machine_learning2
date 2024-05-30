@@ -120,7 +120,7 @@ class NeuralNetwork:
             raise TypeError("alpha must be a float")
         if alpha < 0:
             raise ValueError("alpha must be positive")
-        
+
         for epoch in range(iterations):
             A1, A2 = self.forward_prop(X)
 
@@ -128,6 +128,3 @@ class NeuralNetwork:
 
         # print("We made it this far")
         return self.evaluate(X, Y)
-    
-
-        
