@@ -3,6 +3,7 @@
 """Documents here! Getcher Documents!"""
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 """Documentation is here"""
 
@@ -96,10 +97,35 @@ class Neuron:
         if alpha < 0:
             raise ValueError("alpha must be positive")
 
+        if (verbose == True) or (graph == True):
+            # print("step:", step)
+            # print("iterations:", iterations)
+            if not isinstance(step, int):
+                raise TypeError ("step must be an integer")
+            if (step < 0) or (step > iterations):
+                raise ValueError ("step must be positive and <= iterations")
+
+        # rows = int(iterations / step)
+        # print(rows)
+
+        plot_matrix = [[], []]
+        
         for epoch in range(iterations):
             A = self.forward_prop(X)
             # cost = self.cost(Y, A)
 
             self.gradient_descent(X, Y, A, alpha)
+            if epoch % step == 0:
+                if verbose == True:
+                    print("Cost after", str(epoch), "iterations:", str(self.cost(Y, A)))
+                if graph == True:
+                    plot_matrix[0].append(epoch)
+                    plot_matrix[1].append(self.cost(Y, A))
 
+        # print("Plot matrix:", plot_matrix)
+        plt.plot(plot_matrix[0], plot_matrix[1])
+        plt.xlabel('Epochs')
+        plt.ylabel('Cost')
+        plt.title("Cost vs Epochs")
+        plt.show()
         return self.evaluate(X, Y)
