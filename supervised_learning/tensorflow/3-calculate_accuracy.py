@@ -5,9 +5,9 @@ tf.disable_eager_execution()
 
 def calculate_accuracy(y, y_pred):
     y = tf.cast(y, tf.int32)
-    y_pred = tf.argmax(y_pred, axis=1)
+    # y_pred = tf.argmax(y_pred, axis=1)
 
-    correct_predictions = tf.equal(y, y_pred)
+    correct_predictions = tf.equal(tf.argmax(y, axis=1), tf.argmax(y_pred, axis=1))
 
     accuracy = tf.reduce_mean(tf.cast(correct_predictions, tf.float32))
 
