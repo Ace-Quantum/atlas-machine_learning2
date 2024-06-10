@@ -3,6 +3,7 @@
 
 import numpy as np
 
+
 def shuffle_data(X, Y):
     """Documentation"""
     assert len(X) == len(Y)
