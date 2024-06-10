@@ -1,12 +1,10 @@
 #!/usr/bin/env python3
-
+"""Documentation"""
 import numpy as np
 
 def normalize(X, m, s):
-    norm_arr = []
+    """Documentation"""
 
-    for i in X:
-        temp = i / X.max()
-        norm_arr.append(temp)
+    norm_arr = (X - m) / s
 
     return norm_arr
