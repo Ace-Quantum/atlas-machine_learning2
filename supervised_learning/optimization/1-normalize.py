@@ -2,6 +2,7 @@
 """Documentation"""
 import numpy as np
 
+
 def normalize(X, m, s):
     """Documentation"""
 
