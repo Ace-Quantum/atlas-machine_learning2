@@ -6,20 +6,23 @@ def create_mini_batches(X, Y, batch_size):
     mini_batches = []
     # data = np.haystack(X, Y)
     # np.random.shuffle(data)
-    big_batch = shuffle_data(X, Y)
-    n_minibatches = big_batch.shape[0] // batch_size
+
+    # big_batch = shuffle_data(X, Y)
+
+    X_shuf, Y_shuf = shuffle_data(X, Y)
+
+    n_minibatches =  len(X_shuf) // batch_size
 
     i = 0
 
-    for i in range(n_minibatches + 1):
-        mini_batch = big_batch[i * batch_size:(i + 1) * batch_size, :]
-        X_mini = mini_batch[:, :-1]
-        Y_mini = mini_batch[:, -1].reshape((-1, 1))
-        mini_batches.append((X_mini, Y_mini))
-    if big_batch.shape[0] % batch_size != 0:
-        mini_batch = big_batch[i * batch_size:big_batch.shape[0]]
-        X_mini = mini_batch[:, :-1]
-        Y_mini = mini_batch[:, -1].reshape((-1, 1))
-        mini_batches.append((X_mini, Y_mini))
+    for i in range(n_minibatches):
+        start = i * batch_size
+        end = start + batch_size
+        mini_batches.append((X_shuf[start:end], Y_shuf[start:end]))
+
+
+    if len(X_shuf) % batch_size != 0:
+        last_batch_size = len(X_shuf) - (n_minibatches * batch_size)
+        mini_batches.append((X_shuf[-last_batch_size:], Y_shuf[-last_batch_size:]))
 
     return mini_batches
