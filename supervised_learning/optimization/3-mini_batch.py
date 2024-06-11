@@ -25,6 +25,7 @@ def create_mini_batches(X, Y, batch_size):
 
     if len(X_shuf) % batch_size != 0:
         last_batch_size = len(X_shuf) - (n_minibatches * batch_size)
-        mini_batches.append((X_shuf[-last_batch_size:], Y_shuf[-last_batch_size:]))
+        mini_batches.append((
+            X_shuf[-last_batch_size:], Y_shuf[-last_batch_size:]))
 
     return mini_batches
