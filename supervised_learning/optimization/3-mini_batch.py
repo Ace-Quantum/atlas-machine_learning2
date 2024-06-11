@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-import numpy as np
+shuffle_data = __import__('2-shuffle_data').shuffle_data
 
 def create_mini_batches(X, Y, batch_size):
     mini_batches = []
-    data = np.haystack(X, Y)
-    np.random.shuffle(data)
-    n_minibatches = data.shape[0] // batch_size
+    # data = np.haystack(X, Y)
+    # np.random.shuffle(data)
+    big_batch = shuffle_data(X, Y)
+    n_minibatches = big_batch.shape[0] // batch_size
 
     i = 0
 
