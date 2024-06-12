@@ -5,6 +5,9 @@ import tensorflow as tf
 def create_momentum_op(alpha, beta1):
     global_step = tf.Variable(0)
 
-    optimizer = tf.train.MomentumOptimizer(alpha, beta1, use_nesterov=True).minimize(tf.losses.mean_squared_error(), global_step=global_step)
+    optimizer = tf.keras.optimizers.SGD(
+        learning_rate=alpha, 
+        momentum=beta1, 
+        nesterov=True)
 
     return optimizer
