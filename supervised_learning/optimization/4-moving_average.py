@@ -12,15 +12,13 @@ def moving_average(data, beta):
     if len(data) == 0:
         return moving_averages
 
-    moving_averages.append(data[0])
+    # moving_averages.append(data[0])
+
+    exp_weighted_avg = 0
 
     for i in range(1, len(data)):
-        moving_average = alpha * data[i] + beta * moving_averages[-1]
-        moving_averages.append(moving_average)
+        exp_weighted_avg = beta * exp_weighted_avg + alpha * data[i]
+        bias = 1 - beta**(i + 1)
+        moving_averages.append(bias / bias_correction)
 
-    n = len(data)
-    d = len(moving_averages)
-    bias_correction = 1- beta**n
-    biased_moving_averages = [ma / bias_correction for ma in moving_averages]
-
-    return biased_moving_averages
+    return moving_averages
