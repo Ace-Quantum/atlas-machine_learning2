@@ -12,7 +12,7 @@ def moving_average(data, beta):
     if len(data) == 0:
         return moving_averages
     
-    full_weight = sum([i**(-float_beta) for i in range(len(data))])
+    full_weight = sum([(i+1)**(-float_beta) for i in range(1, len(data)+1)])
 
     # moving_averages.append(data[0])
 
