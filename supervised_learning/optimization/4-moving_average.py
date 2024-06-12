@@ -11,10 +11,6 @@ def moving_average(data, beta):
 
     if len(data) == 0:
         return moving_averages
-    
-    # n = sum((x - moving_averages[-1]) **2 for x in data)
-    # d = len(data)
-    # bias_correction_tem = n / d
 
     moving_averages.append(data[0])
 
@@ -23,7 +19,7 @@ def moving_average(data, beta):
         moving_averages.append(moving_average)
 
     n = len(data)
-    d = len(moving_averages) -1
+    d = len(moving_averages)
     bias_correction = n /d
     biased_moving_averages = [ma * bias_correction for ma in moving_averages]
 
