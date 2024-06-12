@@ -19,6 +19,6 @@ def moving_average(data, beta):
     for i in range(1, len(data)):
         exp_weighted_avg = beta * exp_weighted_avg + alpha * data[i]
         bias = 1 - beta**(i + 1)
-        moving_averages.append(bias / bias_correction)
+        moving_averages.append(exp_weighted_avg / bias)
 
     return moving_averages
