@@ -14,12 +14,12 @@ def moving_average(data, beta):
     else:
         return moving_averages
     
-    n = sum((x - moving_averages[-1]) **2 for x in data)
-    d = len(data)
-    bias_correction_tem = n / d
+    # n = sum((x - moving_averages[-1]) **2 for x in data)
+    # d = len(data)
+    # bias_correction_tem = n / d
 
     for i in range(1, len(data)):
-        moving_average = alpha * data[i] + (1 - alpha) * moving_averages[i - 1] + bias_correction_tem
+        moving_average = alpha * data[i] + beta * moving_averages[-1]
         moving_averages.append(moving_average)
 
     return moving_averages
