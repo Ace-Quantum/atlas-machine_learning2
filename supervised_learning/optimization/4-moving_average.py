@@ -20,7 +20,7 @@ def moving_average(data, beta):
 
     n = len(data)
     d = len(moving_averages)
-    bias_correction = n /d
-    biased_moving_averages = [ma * bias_correction for ma in moving_averages]
+    bias_correction = 1- beta**n
+    biased_moving_averages = [ma / bias_correction for ma in moving_averages]
 
     return biased_moving_averages
