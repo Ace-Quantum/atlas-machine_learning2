@@ -7,8 +7,9 @@ import tensorflow as tf
 
 
 def create_RMSProp_op(alpha, beta2, epsilon):
+    """Documentation"""
 
     return tf.keras.optimizers.RMSprop(
-        learning_rate=alpha, 
-        rho=beta2, 
+        learning_rate=alpha,
+        rho=beta2,
         epsilon=epsilon)
