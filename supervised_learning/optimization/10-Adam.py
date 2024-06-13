@@ -3,7 +3,7 @@
 import tensorflow as tf
 
 def create_Adam_op(alpha, beta1, beta2, epsilon):
-    optimizer = tf.train.AdamOptimizer(
+    optimizer = tf.keras.optimizers.Adam(
         learning_rate = alpha,
         beta1=beta1,
         beta2=beta2,
