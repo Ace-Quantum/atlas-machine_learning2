@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-
+"""Documentation"""
 import numpy as np
 
-def create_confusion_matrix(labels, logits):
 
+def create_confusion_matrix(labels, logits):
+    """Documentation"""
     true_labels = labels.argmax(axis=1)
     predicted_labels = logits.argmax(axis=1)
 
