@@ -9,9 +9,9 @@ def sensitivity(confusion):
 
     for i in range(num_classes):
         true_pos = confusion[i, i]
-        false_neg = np.sum(confusion[:, i]) - true_pos
+        false_neg = np.sum(confusion[i, :]) - true_pos
 
-        sensetive = true_pos / (true_pos + false_neg) if false_neg > 0 else 1
-        sensetivity_return.append(round(sensetive, 8))
+        sens = true_pos / (true_pos + false_neg) if false_neg > 0 else 1
+        sensetivity_return.append(sens)
 
     return sensetivity_return
