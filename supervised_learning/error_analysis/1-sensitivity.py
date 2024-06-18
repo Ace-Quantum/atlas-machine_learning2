@@ -2,6 +2,7 @@
 """Documentation"""
 import numpy as np
 
+
 def sensitivity(confusion):
     """documentation"""
     sensetivity_return = []
