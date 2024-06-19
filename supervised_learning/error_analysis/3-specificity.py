@@ -6,14 +6,15 @@ import numpy as np
 
 def specificity(confusion):
     """documentation"""
-    sensetivity_return = []
+    specificity_return = []
     num_classes = confusion.shape[0]
+    # print("Num classes" + str(num_classes))
 
     for i in range(num_classes):
-        true_pos = confusion[i, i]
-        false_neg = np.sum(confusion[:, i]) - true_pos
+        true_neg = np.diag(confusion)
+        false_pos = np.sum(confusion, axis=0) - true_pos
 
-        sens = num_classes - (true_pos / (true_pos + false_neg)) if false_neg > 0 else 1
-        sensetivity_return.append(round(sens, 8))
+        specs = true_neg / (false_pos + false_neg) if false_neg > 0 else 1
+        specificity_return.append(round(specs, 8))
 
-    return sensetivity_return
+    return specificity_return
