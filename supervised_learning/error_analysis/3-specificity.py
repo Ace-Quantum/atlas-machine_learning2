@@ -13,7 +13,7 @@ def specificity(confusion):
         true_pos = confusion[i, i]
         false_neg = np.sum(confusion[:, i]) - true_pos
 
-        sens = true_pos / (true_pos + false_neg) if false_neg > 0 else 1
+        sens = num_classes - (true_pos / (true_pos + false_neg)) if false_neg > 0 else 1
         sensetivity_return.append(round(sens, 8))
 
     return sensetivity_return
