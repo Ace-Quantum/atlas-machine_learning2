@@ -1,0 +1,7 @@
+#!/usr/bin/env python3
+"""Here's some documentation"""
+
+
+def l2_reg_cost(cost, lambtha, weights, L, m):
+    """And some more documentation"""
+    return 0
