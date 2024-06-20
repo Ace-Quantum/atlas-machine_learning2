@@ -14,8 +14,10 @@ def l2_reg_cost(cost, lambtha, weights, L, m):
 
     reg_cost = 0
 
-    for layer_name, weight in weights.items():
-        reg_cost += np.sum(np.square(weight))
+    for layer_name, layer_params in weights.items():
+        weight_matrix = layer_params["weights"]
+        bias_vector = layer_params["biases"]
+        reg_cost += np.sum(np.square(weight_matrix)) + np.sum(np.square(bias_vector))
 
     reg_term = lambtha / (2 * m) * reg_cost
 
