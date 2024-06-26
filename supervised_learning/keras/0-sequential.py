@@ -10,6 +10,6 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
         if i < len(layers) - 1:
             model.add(Dropout(rate=keep_prob))
 
-            model.compile(optimizer='adam', loss='mean_squared_error')
+    model.compile(optimizer='adam', loss='mean_squared_error')
 
-            return model
+    return model
