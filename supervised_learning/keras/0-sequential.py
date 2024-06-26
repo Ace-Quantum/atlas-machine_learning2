@@ -6,7 +6,10 @@ import tensorflow.keras as K
 
 def build_model(nx, layers, activations, lambtha, keep_prob):
     """Documentation"""
-    model = K.models.Sequential()
+    shape = (None, nx)
+    model = K.models.Sequential([
+        K.layers.Input(shape=shape[1:])
+    ])
 
     for i in range(len(layers)):
         model.add(
