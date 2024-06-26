@@ -20,16 +20,12 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
         if i < len(layers) - 1:
             x = K.layers.Dropout(keep_prob)(x)
 
-    outputs = K.layers.Dense(num_nodes, activation='softmax')(x)
-
     # outputs = K.layers.Dense(layers[-1], activation="softmax")(x)
 
-    model = K.models.Model(inputs=inputs, outputs=outputs)
+    model = K.models.Model(inputs=inputs, outputs=x)
 
     model.compile(
-        optimizer="adam",
-        loss="categorical_crossentropy",
-        metrics=["accuracy"]
+        optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"]
     )
 
     return model
