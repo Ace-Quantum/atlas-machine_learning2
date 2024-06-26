@@ -18,3 +18,5 @@ def optimize_model(network, alpha, beta1, beta2):
         optimizer=adam_optomizer,
         metrics=["accuracy"]
     )
+
+    return None
