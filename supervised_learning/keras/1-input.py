@@ -16,7 +16,7 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
 
     outputs = K.layers.Dense(layers[-1], activation='softmax')(x)
 
-    model = Model(inputs=inputs, outputs=outputs)
+    model = K.models.Model(inputs=inputs, outputs=outputs)
 
     model.compile(optimizer='adam', loss='categorical_crossentropy', metrics=['accuracy'])
 
