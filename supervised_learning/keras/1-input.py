@@ -6,7 +6,7 @@ import tensorflow.keras as K
 
 def build_model(nx, layers, activations, lambtha, keep_prob):
     """Documentation"""
-    inputs = K.layers.Input(shape=(nx,))
+    inputs = K.Input(shape=(nx,))
 
     x = inputs
 
