@@ -9,13 +9,12 @@ def optimize_model(network, alpha, beta1, beta2):
     """Documentation"""
 
     adam_optomizer = K.optimizers.Adam(
-        lr=alpha, 
-        beta_1=beta1, 
-        beta_2=beta2
-    )
+        lr=alpha,
+        beta_1=beta1,
+        beta_2=beta2)
 
     network.compile(
-        loss="categorical_crossentropy", 
-        optimizer=adam_optomizer, 
+        loss="categorical_crossentropy",
+        optimizer=adam_optomizer,
         metrics=["accuracy"]
     )
