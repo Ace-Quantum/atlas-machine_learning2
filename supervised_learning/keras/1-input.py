@@ -22,6 +22,8 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
 
     model = K.models.Model(inputs=inputs, outputs=outputs)
 
-    model.compile(optimizer="adam", loss="categorical_crossentropy", metrics=["accuracy"])
+    model.compile(optimizer="adam",
+                  loss="categorical_crossentropy",
+                  metrics=["accuracy"])
 
     return model
