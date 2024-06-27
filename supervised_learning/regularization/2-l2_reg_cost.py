@@ -5,12 +5,12 @@ import tensorflow as tf
 
 def l2_reg_cost(cost, model):
     """And some more documentation"""
-    l2_loss = tf.constant(0., dtype=tf.float32)
+    l2_loss = tf.constant(0.0)
 
     for layer in model.layers:
-        if hasattr(layer, 'activity_regularizer'):
-            l2_loss += tf.reduce_sum(
-                layer.activity_regularizer.l2_regularization())
+        if layer.__class__.__name__ == 'Dense':
+            l2_loss += tf.reduce_sum(tf.square(layer.kernel))
+            l2_loss += tf.reduce_sum(tf.square(layer.bias))
 
     total_cost = cost + l2_loss
 
