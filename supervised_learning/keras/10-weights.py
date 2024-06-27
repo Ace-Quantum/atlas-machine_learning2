@@ -15,4 +15,3 @@ def load_weights(network, filename):
 
     """Documentation"""
     network.load_weights(filename)
-    
