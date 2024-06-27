@@ -8,9 +8,8 @@ def l2_reg_cost(cost, model):
     l2_loss = tf.constant(0.0)
 
     for layer in model.layers:
-        if layer.__class__.__name__ == 'Dense':
-            l2_loss += tf.reduce_sum(tf.square(layer.kernel))
-            l2_loss += tf.reduce_sum(tf.square(layer.bias))
+        if layer.losses:
+            l2_loss += tf.add_n(layer.losses)
 
     total_cost = cost + l2_loss
 
