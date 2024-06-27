@@ -8,9 +8,9 @@ import tensorflow.keras as K
 def save_model(network, filename):
 
     """Documentation"""
-    return None
+    network.save(filename)
 
 def load_model(filename):
 
     """Documentation"""
-    return None
+    return K.models.load_model(filename)
