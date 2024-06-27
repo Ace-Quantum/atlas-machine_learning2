@@ -8,8 +8,9 @@ def l2_reg_cost(cost, model):
     l2_loss = tf.constant(0.0)
 
     for layer in model.layers:
-        if layer.losses:
-            l2_loss += tf.add_n(layer.losses)
+        if hasattr(layer, 'activity_regularizer'):
+            l2_loss += tf.reduce_sum(
+                layer.activity_regularizer.l2_regularization())
 
     total_cost = cost + l2_loss
 
