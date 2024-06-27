@@ -10,7 +10,7 @@ def predict(network, data, verbose=True):
     model = network
     predictions = model.predict(data)
 
-    if verbose:
-        print(predictions)
+    # if verbose:
+        # print(predictions)
 
     return predictions
