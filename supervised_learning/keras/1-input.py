@@ -18,11 +18,11 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
             kernel_regularizer=K.regularizers.l2(lambtha),
             activation=activations[i],
         )(x)
-        if i != len(layers):
+        if i != len(layers) - 1:
             x = K.layers.Dropout(1 - keep_prob)(x)
 
-    outputs = K.layers.Dense(layers[-1], activation=activations[-1])(x)
+    # outputs = K.layers.Dense(layers[-1], activation=activations[-1])(x)
 
-    model = K.models.Model(inputs=inputs, outputs=outputs)
+    model = K.models.Model(inputs=inputs, outputs=x)
 
     return model
