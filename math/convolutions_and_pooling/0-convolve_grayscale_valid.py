@@ -9,7 +9,7 @@ def convolve_grayscale_valid(images, kernel):
     """Documentation"""
 
     size_h = images.shape[1]-kernel.shape[0]+1
-    size_w = kernel.shape[2]-kernel.shape[1]+1
+    size_w = images.shape[2]-kernel.shape[1]+1
     output = np.zeros((images.shape[0], size_h, size_w))
 
     kernel = np.fliplr(np.fliplr(kernel))
