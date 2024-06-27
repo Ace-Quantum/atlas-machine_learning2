@@ -5,7 +5,8 @@
 import tensorflow.keras as K
 
 
-def test_model(network, data, labels, veerbose=True):
+def test_model(network, data, labels, verbose=True):
     """Documentation"""
     model = network
-    return model.evaluate(data, labels, verbose=veerbose)
+    loss, accuracy = model.evaluate(data, labels, verbose=verbose)
+    return loss, accuracy
