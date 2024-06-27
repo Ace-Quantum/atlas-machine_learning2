@@ -10,6 +10,7 @@ def save_model(network, filename):
     """Documentation"""
     network.save(filename)
 
+
 def load_model(filename):
 
     """Documentation"""
