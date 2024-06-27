@@ -5,6 +5,12 @@
 import tensorflow.keras as K
 
 
-def predict(network, data, veerbose=True):
+def predict(network, data, verbose=True):
     """Documentation"""
-    return None
+    model = network
+    predictions = model.predict(data)
+
+    if verbose:
+        print(predictions)
+
+    return predictions
