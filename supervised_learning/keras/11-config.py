@@ -14,4 +14,7 @@ def save_config(network, filename):
 
 def load_configuration(filename):
     """Documentation"""
-    return None
+    with open(filename, 'r') as json_file:
+        config = json_file.read()
+    model = K.models.model_from_json(config)
+    return model
