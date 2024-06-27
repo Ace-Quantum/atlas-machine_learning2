@@ -5,7 +5,7 @@
 import numpy as np
 
 
-def convolve_grayscale_valid(images, kernel):
+def convolve_grayscale_same(images, kernel):
     """Documentation"""
 
     m, h, w = images.shape
