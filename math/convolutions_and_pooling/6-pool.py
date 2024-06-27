@@ -5,7 +5,7 @@
 import numpy as np
 
 
-def def pool(images, kernel_shape, stride, mode='max'):
+def pool(images, kernel_shape, stride, mode='max'):
     """Documentation"""
 
     m, h, w, c = images.shape
