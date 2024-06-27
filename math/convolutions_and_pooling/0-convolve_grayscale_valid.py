@@ -14,7 +14,7 @@ def convolve_grayscale_valid(images, kernel):
 
     kernel = np.fliplr(np.fliplr(kernel))
 
-    for i in range(m):
+    for i in range(size_h):
         for j in range(size_h - size_h + 1):
             output[:, i, j] = np.sum(images[:, i:i+kernel.shape[1],
                                             j:j.kernel.shape[0]] * kernel,
