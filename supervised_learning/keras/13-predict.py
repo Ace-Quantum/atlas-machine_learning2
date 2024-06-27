@@ -7,8 +7,8 @@ import tensorflow.keras as K
 
 def predict(network, data, verbose=True):
     """Documentation"""
-    model = network
-    predictions = model.predict(data)
+    # model = network
+    predictions = network.predict(data)
 
     # if verbose:
         # print(predictions)
