@@ -16,25 +16,19 @@ import numpy as np
 def l2_reg_gradient_descent(Y, weights, cache, alpha, lambtha, L):
     """And some more documentation"""
 
-    grads = {}
+    m = Y.shape[1]
 
-    for i in range(L):
-        z = cache['Z' + str(i+1)]
-        a = cache['A' + str(i+1)]
+    dZ = cache['A' + str(L)] - Y
 
-        dz = a - Y
-        dp = np.dot(cache['Z' + str(i)], dz.T)
-        dW = dp / Y.shape[1] + lambtha * weights['W' + str(i+1)]
-        db = np.sum(dz, axis=1, keepdims=True)
+    for l in range(L, 0, -1):
+        A_prev = cache['A' + str(l-1)]
+        W = weights['W' + str(l)]
 
-        grads['dW' + str(i+1)] = dW
-        grads['db' + str(i+1)] = db
+        dW = 1 / m * np.dot(dZ, A_prev.T) + lambtha / m * W
+        db = 1 / m * np.sum(dZ, axis=1, keepdims=True)
+        dA_prev = np.dot(W.T, dZ)
 
-        if i != L - 1:
-            da_prev = np.dot(weights['W' + str(i+2)].T, dz)
-            cache['A' + str(i+2)] = np.tanh(da_prev)
-            cache['Z' + str(i+2)] = da_prev
+        weights['W' + str(l)] -= alpha * dW
+        weights['b' + str(l)] -= alpha * db
 
-    for i in range(L):
-        weights['W' + str(i+1)] -= alpha * grads['dW' + str(i+1)]
-        weights['b' + str(i + 1)] -= grads['db' + str(i+1)]
+        dz = dA_prev * (1 - np.power(A_prev, 2))
