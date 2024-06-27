@@ -6,6 +6,8 @@ import tensorflow.keras as K
 
 def build_model(nx, layers, activations, lambtha, keep_prob):
     """Documentation"""
+
+    # set l2 var
     inputs = K.layers.Input(shape=(nx,))
 
     x = inputs
@@ -21,9 +23,5 @@ def build_model(nx, layers, activations, lambtha, keep_prob):
     outputs = K.layers.Dense(layers[-1], activation=activations[-1])(x)
 
     model = K.models.Model(inputs=inputs, outputs=outputs)
-
-    model.compile(optimizer="adam",
-                  loss="categorical_crossentropy",
-                  metrics=["accuracy"])
 
     return model
