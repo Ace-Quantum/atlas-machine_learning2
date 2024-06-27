@@ -3,11 +3,14 @@
 """Documentation"""
 
 import tensorflow.keras as K
+import json
 
 
 def save_config(network, filename):
     """Documentation"""
-    return None
+    config = network.to_json()
+    with open(filename, 'w') as json_file:
+        json_file.write(config)
 
 
 def load_configuration(filename):
