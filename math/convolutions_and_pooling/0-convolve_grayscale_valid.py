@@ -8,17 +8,18 @@ import numpy as np
 def convolve_grayscale_valid(images, kernel):
     """Documentation"""
 
-    size_h = images.shape[1] - kernel.shape[0] + 1
-    size_w = images.shape[2] - kernel.shape[1] + 1
-    output = np.zeros((images.shape[0], size_h, size_w))
+    m, h, w = images.shape
+    kh, kw = kernel.shape
 
-    kernel = np.flipud(np.fliplr(kernel))
+    output_h = h - kh + 1
+    output_w = w - kw + 1
 
-    for i in range(images.shape[0]):
-        for j in range(size_h):
-            for k in range(size_w):
-                sub_output = images[i, j: j + kernel.shape[0],
-                                    k: k + kernel.shape[1]]
-                output[:, i, j] = np.sum(sub_output * kernel)
+    con_images = np.zeros((m, output_h, output_w))
 
-    return output
+    for i in range(output_h):
+        for j in range(output_w):
+            con_images[:, i, j] = np.sum(
+                images[:, i:i+kh, j:j+kw] * kernel, axis=(1, 2)
+            )
+
+    return con_images
