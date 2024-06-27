@@ -9,9 +9,11 @@ def l2_reg_cost(cost, model):
     layer_losses = []
 
     for layer in model.layers:
-        if isinstance(layer, tf.keras.layers.Dense):
-            l2_loss += tf.reduce_sum(layer.losses)
+        if layer.__class__.__name__ == 'Dense':
+            l2_loss = tf.reduce_sum(
+                tf.square(layer.kernel)) + tf.reduce_sum(tf.square(layer.bias))
+            layer_losses.append(l2_loss)
 
-    total_cost = cost + layer_losses
+    total_cost = cost + tf.stack(layer_losses)
 
     return total_cost
