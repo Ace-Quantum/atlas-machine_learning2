@@ -5,7 +5,7 @@ import tensorflow as tf
 
 def l2_reg_cost(cost, model):
     """And some more documentation"""
-    l2_loss = tf.constant(0.0)
+    l2_loss = tf.constant(0., dtype=tf.float32)
 
     for layer in model.layers:
         if hasattr(layer, 'activity_regularizer'):
