@@ -2,6 +2,7 @@
 """Documentation since the checker didn't like the last one"""
 import numpy as np
 
+
 def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     """Documentation"""
 
@@ -20,8 +21,18 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
     else:
         pad_h, pad_w = 0, 0
 
-    A_prev_pad = np.pad(A_prev, ((0, 0), (pad_h, pad_h), (pad_w, pad_w), (0, 0)), mode='constant', constant_values=0)
-    dA_prev_pad = np.pad(dA_prev, ((0, 0), (pad_h, pad_h), (pad_w, pad_w), (0, 0)), mode='constant', constant_values=0)
+    A_prev_pad = np.pad(
+        A_prev,
+        ((0, 0), (pad_h, pad_h), (pad_w, pad_w), (0, 0)),
+        mode="constant",
+        constant_values=0,
+    )
+    dA_prev_pad = np.pad(
+        dA_prev,
+        ((0, 0), (pad_h, pad_h), (pad_w, pad_w), (0, 0)),
+        mode="constant",
+        constant_values=0,
+    )
 
     for i in range(m):
         for h in range(h_new):
@@ -34,7 +45,9 @@ def conv_backward(dZ, A_prev, W, b, padding="same", stride=(1, 1)):
 
                     A_slice = A_prev_pad[i, h_start:h_end, w_start:w_end, :]
 
-                    dA_prev_pad[i, h_start:h_end, w_start:w_end, :] += W[..., c] * dZ[i, h, w, c]
+                    dA_prev_pad[i, h_start:h_end, w_start:w_end, :] += (
+                        W[..., c] * dZ[i, h, w, c]
+                    )
                     dW[..., c] += A_slice * dZ[i, h, w, c]
                     db[..., c] += dZ[i, h, w, c]
 
