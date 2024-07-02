@@ -19,7 +19,8 @@ import numpy as np
       indicating whether to perform maximum or average pooling, respectively
     Returns: the output of the pooling layer"""
 
-def pool_forward(A_prev, kernel_shape, stride=(1,1), mode='max'):
+
+def pool_forward(A_prev, kernel_shape, stride=(1, 1), mode="max"):
     """Documentation ought to go here"""
 
     (m, h_prev, w_prev, c_prev) = A_prev.shape
@@ -42,9 +43,9 @@ def pool_forward(A_prev, kernel_shape, stride=(1,1), mode='max'):
 
                     A_slice = A_prev[i, h_start:h_end, w_start:w_end, c]
 
-                    if mode == 'max':
+                    if mode == "max":
                         A[i, h, w, c] = np.max(A_slice)
-                    elif mode == 'avg':
+                    elif mode == "avg":
                         A[i, h, w, c] = np.mean(A_slice)
 
     return A
