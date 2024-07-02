@@ -1,5 +1,5 @@
 #!/usr/bin/env python3"""
-
+"""Same as before but now with pooling!"""
 import numpy as np
 
 
