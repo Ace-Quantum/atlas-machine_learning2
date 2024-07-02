@@ -1,5 +1,7 @@
 #!/usr/bin/env python3"""
 
+import numpy as np
+
 """A_prev is a numpy.ndarray of shape (
     m, h_prev, w_prev, c_prev) containing the output of the previous layer
         m is the number of examples
@@ -16,8 +18,6 @@
     mode is a string containing either max or avg,
       indicating whether to perform maximum or average pooling, respectively
     Returns: the output of the pooling layer"""
-
-import numpy as np
 
 def pool_forward(A_prev, kernel_shape, stride=(1,1), mode='max'):
     """Documentation ought to go here"""
