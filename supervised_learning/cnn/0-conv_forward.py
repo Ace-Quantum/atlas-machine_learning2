@@ -59,9 +59,7 @@ def conv_forward(A_prev, W, b, activation, padding="same", stride=(1, 1)):
                     w_end = w_start + kw
 
                     A_slice = A_prev_pad[i, h_start:h_end, w_start:w_end, :]
-                    Z[i, h, w, c] = np.sum(
-                        A_slice * W[..., c]) + float(b[..., c])
-
+                    Z[i, h, w, c] = np.max(A_slice)
     ret_output = activation(Z)
 
     return ret_output
