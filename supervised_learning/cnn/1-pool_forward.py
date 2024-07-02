@@ -2,7 +2,7 @@
 
 import numpy as np
 
-"""A_prev is a numpy.ndarray of shape (
+"""A_prev is an array of shape (
     m, h_prev, w_prev, c_prev) containing the output of the previous layer
         m is the number of examples
         h_prev is the height of the previous layer
