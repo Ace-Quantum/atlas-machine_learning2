@@ -10,7 +10,6 @@ def inception_network():
 
     model_start = K.layers.Input(shape=(224, 224, 3))
 
-    
     layers = K.layers.Conv2D(
         kernel_size=(7, 7),
         filters=64,
@@ -18,7 +17,6 @@ def inception_network():
         padding='same',
         activation='relu'
     )(model_start)
-
 
     layers = K.layers.MaxPooling2D(
         pool_size=(3, 3),
