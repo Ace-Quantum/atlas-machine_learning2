@@ -8,3 +8,5 @@ transition_layer = __import__('6-transitional_layer').transitional_layer
 
 def densenet121(growth_rate=31, compression=1.0):
     """Builds the DenseNet architecture"""
+
+    
