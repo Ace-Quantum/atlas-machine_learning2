@@ -57,7 +57,7 @@ def resnet50():
         pool_size=(2, 2)
     )(layers)
 
-    layers = K.layers.flatten
+    layers = K.layers.flatten()(layers)
 
     layers = K.layers.Dense(1000, activation='softmax')(layers)
 
