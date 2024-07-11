@@ -39,17 +39,17 @@ def projection_block(A_prev, filters, s=2):
     layer = K.layers.BatchNormalization(axis=3)(layer)
 
     input_shortcut = K.layers.Conv2D(
-        filters = filters[2],
+        filters=filters[2],
         strides=s,
         kernel_size=(1, 1),
-        padding='same',
-        kernel_initializer=K.initializers.glorot_uniform(seed=0)
+        padding="same",
+        kernel_initializer=K.initializers.glorot_uniform(seed=0),
     )(input_shortcut)
 
     input_shortcut = K.layers.BatchNormalization(axis=3)(input_shortcut)
 
     layer = K.layers.Add()([layer, input_shortcut])
-    
+
     layer = K.layers.Activation("relu")(layer)
 
     return layer
