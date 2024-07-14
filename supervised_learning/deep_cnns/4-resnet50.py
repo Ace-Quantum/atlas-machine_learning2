@@ -53,7 +53,7 @@ def resnet50():
     layers = identity_block(layers, [512, 512, 2048])
 
     # last stage
-    layers = K.layers.MaxPooling2D(
+    layers = K.layers.AveragePooling2D(
         pool_size=(2, 2)
     )(layers)
 
