@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-import numpy as np
-
 """Performs Backwards Prop with Pooling"""
+
+import numpy as np
 
 """Variables:
 dA: numpy array containing partial derivatives respective to pooling output
