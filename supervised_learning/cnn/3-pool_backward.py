@@ -12,11 +12,12 @@ reterns partial derivatives in respect to the previous layer"""
 
 import numpy as np
 
-def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
+
+def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode="max"):
     """Idk what you expect here I put all the notes above"""
     # Grabbing the new dimensions of the to-be return array
     m, h_new, w_new, c_new = dA.shape
-    # Grabbing the shape of the previous layer 
+    # Grabbing the shape of the previous layer
     # I'm not actually sure I need these though
     _, h_prev, w_prev, _ = A_prev.shape
     # Grabbing the dimensions of the kernel
@@ -37,7 +38,7 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
     for i in range(m):
         # Grab each input individually
         # a_prev = A_prev[i]
-        
+
         # work through the height of what will be our return
         for h in range(h_new):
 
@@ -61,36 +62,47 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
                     horizontal_end = horizontal_start + kw
 
                     # determine pooling method
-                    if mode == 'max':
+                    if mode == "max":
                         # pull the slice of output from a_prev
                         # Why is the end a colon?
-                        a_prev_slice = A_prev[i, vertical_start:vertical_end, horizontal_start:horizontal_end, c]
+                        a_prev_slice = A_prev[
+                            i,
+                            vertical_start:vertical_end,
+                            horizontal_start:horizontal_end,
+                            c,
+                        ]
 
                         # Determine maximum values
                         # max_index = np.unravel_index(np.argmax(a_prev_slice), a_prev_slice.shape)
 
                         # load the mask array with zeroes
-                        mask = (a_prev_slice == np.max(a_prev_slice))
+                        mask = a_prev_slice == np.max(a_prev_slice)
 
                         # assign the true position in the mask through the dimension found with max_index
                         # mask[tuple(max_index)] = 1
 
                         # Assign the values to the return statement,
                         # applying the mask to the derivitives
-                        dA_prev[i,
-                                vertical_start:vertical_end,
-                                horizontal_start:horizontal_end,
-                                c] += mask * dA[i, h, w, c]
-                        
-                    elif mode == 'avg':
+                        dA_prev[
+                            i,
+                            vertical_start:vertical_end,
+                            horizontal_start:horizontal_end,
+                            c,
+                        ] += (
+                            mask * dA[i, h, w, c]
+                        )
+
+                    elif mode == "avg":
                         # In the instance of instead wanting an average pooling
                         # we simply pull the individual derivitive
                         # and apply the average to the layer.
                         da = dA[i, h, w, c]
-                        
-                        dA_prev[i,
-                                vertical_start:vertical_end,
-                                horizontal_start:horizontal_end,
-                                c] += da / (kh * kw)
-                        
+
+                        dA_prev[
+                            i,
+                            vertical_start:vertical_end,
+                            horizontal_start:horizontal_end,
+                            c,
+                        ] += da / (kh * kw)
+
     return dA_prev
