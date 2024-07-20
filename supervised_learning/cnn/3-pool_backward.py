@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import numpy as np
+
 """Performs Backwards Prop with Pooling"""
 
 """Variables:
@@ -9,8 +11,6 @@ kernel_shape: the shape of the pooling kernel
 stride: measure of how far and the kernel moves about the output.
 mode: determines type of pooling
 reterns partial derivatives in respect to the previous layer"""
-
-import numpy as np
 
 
 def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode="max"):
@@ -72,14 +72,8 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode="max"):
                             c,
                         ]
 
-                        # Determine maximum values
-                        # max_index = np.unravel_index(np.argmax(a_prev_slice), a_prev_slice.shape)
-
                         # load the mask array with zeroes
                         mask = a_prev_slice == np.max(a_prev_slice)
-
-                        # assign the true position in the mask through the dimension found with max_index
-                        # mask[tuple(max_index)] = 1
 
                         # Assign the values to the return statement,
                         # applying the mask to the derivitives
