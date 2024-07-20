@@ -30,19 +30,19 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
 
     # determine the new dimensions of the output
     # I need clarification on this
-    h_out = int((h_prev - kh) / sh) + 1
-    w_out = int((w_prev - kw) / sw) + 1
+    # h_out = int((h_prev - kh) / sh) + 1
+    # w_out = int((w_prev - kw) / sw) + 1
 
     # Iterate through the training input
     for i in range(m):
         # Grab each input individually
-        a_prev = A_prev[i]
+        # a_prev = A_prev[i]
         
         # work through the height of what will be our return
-        for h in range(h_out):
+        for h in range(h_new):
 
             # work through the width of what will be our return
-            for w in range(w_out):
+            for w in range(w_new):
 
                 # work through the channels of what will be our return
                 for c in range(c_new):
@@ -64,23 +64,23 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
                     if mode == 'max':
                         # pull the slice of output from a_prev
                         # Why is the end a colon?
-                        a_prev_slice = a_prev[vertical_start:vertical_end, horizontal_start:horizontal_end, :]
+                        a_prev_slice = A_prev[i, vertical_start:vertical_end, horizontal_start:horizontal_end, c]
 
                         # Determine maximum values
-                        max_index = np.unravel_index(np.argmax(a_prev_slice), a_prev_slice.shape)
+                        # max_index = np.unravel_index(np.argmax(a_prev_slice), a_prev_slice.shape)
 
                         # load the mask array with zeroes
-                        mask = np.zeros_like(a_prev_slice)
+                        mask = (a_prev_slice == np.max(a_prev_slice))
 
                         # assign the true position in the mask through the dimension found with max_index
-                        mask[tuple(max_index)] = 1
+                        # mask[tuple(max_index)] = 1
 
                         # Assign the values to the return statement,
                         # applying the mask to the derivitives
                         dA_prev[i,
                                 vertical_start:vertical_end,
                                 horizontal_start:horizontal_end,
-                                :] += mask * dA[i, h, w, c]
+                                c] += mask * dA[i, h, w, c]
                         
                     elif mode == 'avg':
                         # In the instance of instead wanting an average pooling
@@ -91,6 +91,6 @@ def pool_backward(dA, A_prev, kernel_shape, stride=(1, 1), mode='max'):
                         dA_prev[i,
                                 vertical_start:vertical_end,
                                 horizontal_start:horizontal_end,
-                                :] += da / np.prod(kernel_shape)
+                                c] += da / (kh * kw)
                         
     return dA_prev
