@@ -5,57 +5,29 @@ https://towardsdatascience.com/exploring-densenets-from-paper-to-keras-dcc017254
 
 from tensorflow import keras as K
 
-def H(inputs, filter_num, dropout):
-    eps = 1.001e-5
-
-    x = K.layers.BatchNormalization(epsilon=eps)(inputs)
-    x = K.layers.Activation('relu')(x)
-    x = K.layers.ZeroPadding2D((1, 1))(x)
-    x = K.layers.Conv2D(filter_num, kernel_size=(3, 3), use_bias=False, kernel_initializer='he_normal')(x)
-    x = K.layers.Dropout(rate=dropout)(x)
-    return x
-
-# def transition(inputs, filter_num, compression_factor, dropout):
-#     eps = 1.001e-5
-    
-#     x = K.layers.BatchNormalization(epsilon=eps)(inputs)
-#     x = K.layers.Activation('relu')(x)
-#     num_feature_maps = inputs.shape[1]
-    
-#     filters = K.layers.Input(shape=(None, None, 1))
-#     filters = K.layers.Lambda(
-#         lambda x: K.floor_divide(K.cast(x, 'float32'), compression_factor
-#                                  ))(filters)
-    
-#     # I'm not sure if I vibe with this line
-#     filters = K.layers.Reshape((num_feature_maps,))(filters)
-
-#     x = K.layers.Conv2D(
-#         filters=filters, kernel_size=(1, 1), use_bias=False,
-#         padding='same', kernel_initializer='he_normal',
-#         kernel_regularizer=K.regularizers.l2(1e-4))(x)
-    
-#     x = K.layers.Dropout(dropout)(x)
-
-#     x = K.layers.AveragePooling2D(pool_size=(2, 2))(x)
-
-#     return x
-
-
+# I honestly don't know what I'm doing here anymore
 
 def dense_block(X, nb_filters, growth_rate, layers):
     """Builds a dense block"""
-    concat_features = X
 
-    for _ in range(layers):
-        bottleneck = K.layers.Conv2D(nb_filters, kernel_size=(1, 1), use_bias=False, kernel_initializer='he_normal')(concat_features)
-        bottleneck = K.layers.BatchNormalization()(bottleneck)
-        bottleneck = K.layers.Activation('relu')(bottleneck)
+    x = K.layers.BatchNormalization()(X)
+    # x = K.layers.ReLU()(x)
+    x = K.layers.Activation('relu')(x)
 
-        new_features = H(bottleneck, growth_rate, 0.2)
 
-        concat_features = K.layers.concatenate([concat_features, new_features])
+    num_filters_per_layer = []
 
-        nb_filters += growth_rate
+    for i in range(layers):
+        y = K.layers.Conv2D(filters=growth_rate * (i + 1),
+                            kernel_size=3,
+                            padding='same',
+                            kernel_initializer=K.initializers.HeNormal(seed=0))(x)
+        
+        y = K.layers.BatchNormalization()(y)
+        y = K.layers.Activation('relu')(y)
 
-    return concat_features, nb_filters
+        x = K.layers.concatenate([x, y])
+
+        num_filters_per_layer.append(growth_rate * (i + 1))
+
+    return x, sum(num_filters_per_layer)
