@@ -52,3 +52,13 @@ def inception_block(A_prev, filters):
     )(layer_3)
 
     return K.layers.concatenate([layer_1, layer_2, layer_3], axis=3)
+
+
+# Ripped from https://towardsdatascience.com/exploring-densenets-from-paper-to-keras-dcc01725488b
+
+def dense_block( inputs, num_filters, growth_rate, num_layers, dropout_rate ):
+    for i in range(num_layers): # num_layers is the value of 'l'
+        conv_outputs = H(inputs, num_filters , dropout_rate )
+        inputs = tf.keras.layers.Concatenate()([conv_outputs, inputs])
+        num_filters += growth_rate # To increase the number of filters for each layer.
+    return inputs, num_filters
