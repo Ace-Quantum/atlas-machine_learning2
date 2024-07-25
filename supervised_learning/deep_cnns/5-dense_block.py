@@ -9,25 +9,24 @@ from tensorflow import keras as K
 
 def dense_block(X, nb_filters, growth_rate, layers):
     """Builds a dense block"""
+    # X - The output from the previous layer
+    # nb_filters - the number of filters in X
+    # growth_rate - self explanitory
+    # layers - number of layers
 
-    x = K.layers.BatchNormalization()(X)
-    # x = K.layers.ReLU()(x)
-    x = K.layers.Activation('relu')(x)
-
-
-    num_filters_per_layer = []
+    # x = K.layers.BatchNormalization()(X)
+    # x = K.layers.Activation('relu')(x)
 
     for i in range(layers):
+        y = K.layers.BatchNormalization()(X)
+        y = K.layers.Activation('relu')(y)
         y = K.layers.Conv2D(filters=growth_rate * (i + 1),
                             kernel_size=3,
                             padding='same',
-                            kernel_initializer=K.initializers.HeNormal(seed=0))(x)
+                            kernel_initializer=K.initializers.HeNormal(seed=0))(y)
         
-        y = K.layers.BatchNormalization()(y)
-        y = K.layers.Activation('relu')(y)
-
         x = K.layers.concatenate([x, y])
 
-        num_filters_per_layer.append(growth_rate * (i + 1))
+        nb_filters += growth_rate
 
-    return x, sum(num_filters_per_layer)
+    return x, nb_filters

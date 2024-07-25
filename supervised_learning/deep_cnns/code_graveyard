@@ -62,3 +62,27 @@ def dense_block( inputs, num_filters, growth_rate, num_layers, dropout_rate ):
         inputs = tf.keras.layers.Concatenate()([conv_outputs, inputs])
         num_filters += growth_rate # To increase the number of filters for each layer.
     return inputs, num_filters
+
+# ----
+   x = K.layers.BatchNormalization()(X)
+    # x = K.layers.ReLU()(x)
+    x = K.layers.Activation('relu')(x)
+
+
+    num_filters_per_layer = []
+
+    for i in range(layers):
+        y = K.layers.Conv2D(filters=growth_rate * (i + 1),
+                            kernel_size=3,
+                            padding='same',
+                            kernel_initializer=K.initializers.HeNormal(seed=0))(x)
+        
+        y = K.layers.BatchNormalization()(y)
+        y = K.layers.Activation('relu')(y)
+
+        x = K.layers.concatenate([x, y])
+
+        num_filters_per_layer.append(growth_rate * (i + 1))
+
+    return x, sum(num_filters_per_layer)
+

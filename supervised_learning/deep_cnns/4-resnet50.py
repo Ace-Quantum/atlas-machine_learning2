@@ -17,6 +17,7 @@ def resnet50():
         padding='same',
         filters=64,
         strides=2,
+        kernel_initializer=K.initializers.he_normal()
     )(model_start)
 
     layers = K.layers.BatchNormalization(axis=3)(layers)
@@ -53,12 +54,15 @@ def resnet50():
     layers = identity_block(layers, [512, 512, 2048])
 
     # last stage
+    # Need to find out why the parameters are this way
     layers = K.layers.AveragePooling2D(
-        pool_size=(2, 2)
+        pool_size=7,
+        strides=1,
+        padding='valid'
     )(layers)
 
     # layers = K.layers.Flatten()(layers)
 
-    layers = K.layers.Dense(1000, activation='softmax')(layers)
+    layers = K.layers.Dense(1000, activation='softmax', kernel_initializer=K.initializers.he_normal())(layers)
 
     return K.models.Model(model_start, layers)
