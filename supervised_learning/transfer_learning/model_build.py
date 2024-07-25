@@ -37,4 +37,8 @@ softmax = K.layers.Dense(units=10,
                          kernel_regularizer=K.regularizers.l2())
 
 output = softmax(output)
-model = K.models.Model(inputs=input_tensor, outputs=output)
+cifar10 = K.models.Model(inputs=input_tensor, outputs=output)
+
+model.compile(optimizer='adam', loss='sparse_categorical_crossentropy', metrics=['accuracy'])
+
+model.save('cifar10.h5')
